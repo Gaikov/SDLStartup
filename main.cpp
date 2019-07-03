@@ -1,12 +1,35 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-int main(int argv, char** args) {
-    std::cout << "Hello from SDL!" << std::endl;
-    if (SDL_Init(SDL_INIT_VIDEO) != 0){
-        std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+int main(int argv, char **args) {
+    SDL_Window *window;
+
+    SDL_Init(SDL_INIT_VIDEO);
+    
+    window = SDL_CreateWindow(
+            "SDL2 Test",
+            SDL_WINDOWPOS_UNDEFINED,           
+            SDL_WINDOWPOS_UNDEFINED,           
+            640,                               
+            480,                               
+            SDL_WINDOW_OPENGL                  
+    );
+    
+    if (!window) {
+        printf("Could not create window: %s\n", SDL_GetError());
         return 1;
     }
 
-    return 0;
+    bool running = true;
+    while (running) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = false;
+            }
+        }
+    }
+
+    SDL_DestroyWindow(window);
+    SDL_Quit();
 }

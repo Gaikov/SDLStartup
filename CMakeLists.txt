@@ -23,4 +23,4 @@ endif()
 add_executable(SDLTest main.cpp)
 target_link_libraries(SDLTest ${SDL2_LIBRARIES})
 
-print_all_variables()
+#print_all_variables()
