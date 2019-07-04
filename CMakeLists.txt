@@ -17,7 +17,9 @@ if(NOT SDL2_FOUND)
     message(SEND_ERROR "Failed to find SDL")
     return()
 else()
-    include_directories(${SDL2_INCLUDE_DIRS})
+    include_directories(${SDL2_INCLUDE_DIRS}
+            ${SDL2_INCLUDE_DIRS}/.. #fix on macOS
+            )
 endif()
 
 add_executable(SDLTest main.cpp)
