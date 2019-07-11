@@ -22,8 +22,8 @@ int main(int argv, char **args)
 		return 1;
 	}
 
-	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
-	if (!glcontext)
+	SDL_GLContext glContext = SDL_GL_CreateContext(window);
+	if (!glContext)
 	{
 		printf("Can't create gl context: %s\n", SDL_GetError());
 		return 1;
@@ -45,10 +45,25 @@ int main(int argv, char **args)
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
+
+
+		glBegin(GL_TRIANGLES);
+
+		glColor3f(1, 0, 0);
+		glVertex2f(0, 0.5);
+
+		glColor3f(0, 1, 0);
+		glVertex2f(0.5, -0.5);
+
+		glColor3f(0, 0, 1);
+		glVertex2f(-0.5, -0.5);
+		glEnd();
+
 		glFlush();
 		SDL_GL_SwapWindow(window);
 	}
 
+	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
