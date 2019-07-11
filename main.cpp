@@ -3,7 +3,7 @@
 #include <SDL_opengl.h>
 #include "GLTexture.h"
 
-int main(int argv, char **args)
+int SDL_main(int argv, char **args)
 {
 	SDL_Window *window;
 
@@ -59,10 +59,10 @@ int main(int argv, char **args)
 		glVertex2f(0, 0.5);
 
 		glColor3f(0, 1, 0);
-		glVertex2f(0.5, -0.5);
+		glVertex2f(0.5f, -0.5f);
 
 		glColor3f(0, 0, 1);
-		glVertex2f(-0.5, -0.5);
+		glVertex2f(-0.5f, -0.5f);
 		glEnd();
 
 		glFlush();
