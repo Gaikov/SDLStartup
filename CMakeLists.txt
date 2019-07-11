@@ -22,7 +22,13 @@ else()
             )
 endif()
 
-add_executable(SDLTest main.cpp)
-target_link_libraries(SDLTest ${SDL2_LIBRARIES})
+find_package(OPENGL REQUIRED)
+if(NOT OPENGL_FOUND)
+    message(SEND_ERROR "Failed to find OPENGL")
+    return()
+endif()
 
-#print_all_variables()
+add_executable(SDLTest main.cpp)
+target_link_libraries(SDLTest ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES})
+
+print_all_variables()

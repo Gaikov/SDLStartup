@@ -1,35 +1,54 @@
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <SDL_opengl.h>
 
-int main(int argv, char **args) {
-    SDL_Window *window;
+int main(int argv, char **args)
+{
+	SDL_Window *window;
 
-    SDL_Init(SDL_INIT_VIDEO);
-    
-    window = SDL_CreateWindow(
-            "SDL2 Test",
-            SDL_WINDOWPOS_UNDEFINED,           
-            SDL_WINDOWPOS_UNDEFINED,           
-            640,                               
-            480,                               
-            SDL_WINDOW_OPENGL                  
-    );
-    
-    if (!window) {
-        printf("Could not create window: %s\n", SDL_GetError());
-        return 1;
-    }
+	SDL_Init(SDL_INIT_VIDEO);
 
-    bool running = true;
-    while (running) {
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                running = false;
-            }
-        }
-    }
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
+	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
+	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+	window = SDL_CreateWindow("SDL2 Test",
+	                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480,
+	                          SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+	if (!window)
+	{
+		printf("Could not create window: %s\n", SDL_GetError());
+		return 1;
+	}
+
+	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
+	if (!glcontext)
+	{
+		printf("Can't create gl context: %s\n", SDL_GetError());
+		return 1;
+	}
+
+	glClearColor(0.6, 0.6, 0.6, 1);
+
+	bool running = true;
+	while (running)
+	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event))
+		{
+			if (event.type == SDL_QUIT)
+			{
+				running = false;
+			}
+		}
+
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		glFlush();
+		SDL_GL_SwapWindow(window);
+	}
+
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 }
