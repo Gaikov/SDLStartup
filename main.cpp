@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL_opengl.h>
+#include "GLTexture.h"
 
 int main(int argv, char **args)
 {
@@ -26,6 +27,11 @@ int main(int argv, char **args)
 	if (!glContext)
 	{
 		printf("Can't create gl context: %s\n", SDL_GetError());
+		return 1;
+	}
+
+	GLTexture *t = GLTexture::LoadFromFile("text.png");
+	if (!t) {
 		return 1;
 	}
 

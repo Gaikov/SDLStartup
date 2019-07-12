@@ -28,7 +28,11 @@ if(NOT OPENGL_FOUND)
     return()
 endif()
 
-add_executable(SDLTest main.cpp)
+set(SOURCES
+        main.cpp
+        GLTexture.cpp)
+
+add_executable(SDLTest ${SOURCES})
 target_link_libraries(SDLTest ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES})
 
-print_all_variables()
+#print_all_variables()
