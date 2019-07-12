@@ -69,6 +69,7 @@ int main(int argv, char **args)
 		SDL_GL_SwapWindow(window);
 	}
 
+	GLTexture::Free(t);
 	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

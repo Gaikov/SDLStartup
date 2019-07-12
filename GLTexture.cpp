@@ -22,3 +22,8 @@ GLTexture* GLTexture::LoadFromFile(const char *filePath)
 {
 	return new GLTexture();
 }
+
+void GLTexture::Free(GLTexture *t)
+{
+	delete t;
+}
