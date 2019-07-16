@@ -1,6 +1,4 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL_opengl.h>
+#include "headers.h"
 #include "GLTexture.h"
 
 int SDL_main(int argv, char **args)
@@ -30,7 +28,7 @@ int SDL_main(int argv, char **args)
 		return 1;
 	}
 
-	GLTexture *t = GLTexture::LoadFromFile("text.png");
+	GLTexture *t = GLTexture::Load("test.png");
 	if (!t) {
 		return 1;
 	}

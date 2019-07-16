@@ -30,7 +30,7 @@ endif()
 
 set(SOURCES
         main.cpp
-        GLTexture.cpp)
+        GLTexture.cpp headers.h)
 
 add_executable(SDLTest ${SOURCES})
 target_link_libraries(SDLTest ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES})
