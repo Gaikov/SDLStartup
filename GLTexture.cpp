@@ -41,35 +41,33 @@ bool GLTexture::CreateFromFile(const char *filePath)
 	_surf = IMG_Load(filePath);
 	if (!_surf)
 	{
-		printf("can't load image: %s\n", filePath);
+		printf("can't load image: %s (%s)\n", filePath, IMG_GetError());
 		return false;
 	}
 
-	return true;
+	return CreateFromSurface(_surf);
 }
 
 bool GLTexture::CreateFromSurface(SDL_Surface *surf)
 {
-
-
-	/* Create The Texture */
 	glGenTextures(1, &_glTexture);
 
-	/* Typical Texture Generation Using Data From The Bitmap */
+
 	glBindTexture(GL_TEXTURE_2D, _glTexture);
 
-	/* Generate The Texture */
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, _surf->w,
+	glTexImage2D(GL_TEXTURE_2D, 0, 3, surf->w,
 	             surf->h, 0, GL_RGB,
-	             GL_UNSIGNED_BYTE, TextureImage[0]->pixels);
+	             GL_UNSIGNED_BYTE, surf->pixels);
 	glGetError();
 
-	/* Linear Filtering */
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	return true;
 }
 
-return false;
+void GLTexture::Bind()
+{
+	glBindTexture(GL_TEXTURE_2D, _glTexture);
+	glEnable(GL_TEXTURE);
 }

@@ -1,7 +1,7 @@
 #include "headers.h"
 #include "GLTexture.h"
 
-int SDL_main(int argv, char **args)
+int main(int argv, char **args)
 {
 	SDL_Window *window;
 
@@ -33,6 +33,8 @@ int SDL_main(int argv, char **args)
 		return 1;
 	}
 
+	t->Bind();
+
 	glClearColor(0.6, 0.6, 0.6, 1);
 
 	bool running = true;
@@ -48,19 +50,20 @@ int SDL_main(int argv, char **args)
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT);
+		glColor3f(1, 1, 1);
 
 
+		glBegin(GL_QUADS);
 
-		glBegin(GL_TRIANGLES);
 
-		glColor3f(1, 0, 0);
-		glVertex2f(0, 0.5);
+		glVertex2f(-0.5f, -0.5f);
 
-		glColor3f(0, 1, 0);
+		glVertex2f(-0.5f, 0.5f);
+
+		glVertex2f(0.5f, 0.5f);
+
 		glVertex2f(0.5f, -0.5f);
 
-		glColor3f(0, 0, 1);
-		glVertex2f(-0.5f, -0.5f);
 		glEnd();
 
 		glFlush();

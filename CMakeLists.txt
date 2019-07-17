@@ -33,6 +33,6 @@ set(SOURCES
         GLTexture.cpp headers.h)
 
 add_executable(SDLTest ${SOURCES})
-target_link_libraries(SDLTest ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES})
+target_link_libraries(SDLTest ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES} SDL2_image)
 
 #print_all_variables()
