@@ -4,6 +4,7 @@
 
 #include <SDL_image.h>
 #include "GLTexture.h"
+#include "GLUtils.h"
 
 GLTexture::GLTexture() :
 		_surf(nullptr),
@@ -51,23 +52,30 @@ bool GLTexture::CreateFromFile(const char *filePath)
 bool GLTexture::CreateFromSurface(SDL_Surface *surf)
 {
 	glGenTextures(1, &_glTexture);
-
+	GL_CHECK("glGenTextures")
 
 	glBindTexture(GL_TEXTURE_2D, _glTexture);
+	GL_CHECK("glBindTexture")
 
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, surf->w,
-	             surf->h, 0, GL_RGB,
-	             GL_UNSIGNED_BYTE, surf->pixels);
-	glGetError();
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+	             surf->w, surf->h, 0,
+	             GL_RGBA, GL_UNSIGNED_BYTE, surf->pixels);
+	GL_CHECK("glTexImage2D")
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	GL_CHECK("glTexParameteri")
 
 	return true;
 }
 
-void GLTexture::Bind()
+bool GLTexture::Bind()
 {
+	glActiveTexture(GL_TEXTURE0);
+	GL_CHECK("glActiveTexture")
+
 	glBindTexture(GL_TEXTURE_2D, _glTexture);
-	glEnable(GL_TEXTURE);
+	GL_CHECK("glBindTexture")
+
+	return true;
 }

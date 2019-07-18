@@ -14,7 +14,7 @@ class GLTexture
 public:
 	static GLTexture *Load(const char *filePath);
 	static void Free(GLTexture *t);
-	void Bind();
+	bool Bind();
 
 private:
 	GLTexture();

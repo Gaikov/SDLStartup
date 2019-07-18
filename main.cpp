@@ -36,6 +36,7 @@ int main(int argv, char **args)
 	t->Bind();
 
 	glClearColor(0.6, 0.6, 0.6, 1);
+	glEnable(GL_TEXTURE);
 
 	bool running = true;
 	while (running)
@@ -57,12 +58,16 @@ int main(int argv, char **args)
 
 
 		glVertex2f(-0.5f, -0.5f);
+		glTexCoord2f(0, 0);
 
 		glVertex2f(-0.5f, 0.5f);
+		glTexCoord2f(0, 1);
 
 		glVertex2f(0.5f, 0.5f);
+		glTexCoord2f(1, 1);
 
 		glVertex2f(0.5f, -0.5f);
+		glTexCoord2f(1, 0);
 
 		glEnd();
 
