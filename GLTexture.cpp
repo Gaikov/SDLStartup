@@ -60,7 +60,7 @@ bool GLTexture::CreateFromSurface(SDL_Surface *surf)
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
 	             surf->w, surf->h, 0,
 	             GL_RGBA, GL_UNSIGNED_BYTE, surf->pixels);
-	GL_CHECK("glTexImage2D")
+	GL_CHECK("glTexImage2D")//*/
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -71,9 +71,6 @@ bool GLTexture::CreateFromSurface(SDL_Surface *surf)
 
 bool GLTexture::Bind()
 {
-	glActiveTexture(GL_TEXTURE0);
-	GL_CHECK("glActiveTexture")
-
 	glBindTexture(GL_TEXTURE_2D, _glTexture);
 	GL_CHECK("glBindTexture")
 

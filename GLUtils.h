@@ -17,4 +17,7 @@ if (GLUtils::hasError(funcName)) { \
 	return false; \
 }
 
+#define GL_ERROR(funcName) GLUtils::hasError(funcName);
+
+
 #endif //SDLTEST_GLUTILS_H

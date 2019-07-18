@@ -14,22 +14,22 @@ struct glError_t
 static glError_t errors[] = {
 		{
 				GL_INVALID_ENUM,
-				"An unacceptable value is specified for an enumerated argument. The offending command is ignored and has no other side effect than to set the error flag."
+				"An unacceptable value is specified for an enumerated argument."
 		},
 
 		{
 				GL_INVALID_VALUE,
-				"A numeric argument is out of range. The offending command is ignored and has no other side effect than to set the error flag."
+				"A numeric argument is out of range."
 		},
 
 		{
 				GL_INVALID_OPERATION,
-				"The specified operation is not allowed in the current state. The offending command is ignored and has no other side effect than to set the error flag."
+				"The specified operation is not allowed in the current state."
 		},
 
 		{
 				GL_INVALID_FRAMEBUFFER_OPERATION,
-				"The command is trying to render to or read from the framebuffer while the currently bound framebuffer is not framebuffer complete (i.e. the return value from glCheckFramebufferStatus is not GL_FRAMEBUFFER_COMPLETE). The offending command is ignored and has no other side effect than to set the error flag."
+				"The command is trying to render to or read from the framebuffer while the currently bound framebuffer is not framebuffer complete (i.e. the return value from glCheckFramebufferStatus is not GL_FRAMEBUFFER_COMPLETE)."
 		},
 
 		{
@@ -50,10 +50,11 @@ bool GLUtils::hasError(const char* funcName)
 	{
 		if (error.code == code)
 		{
-			printf("GL ERROR: %s : %s\n", funcName, error.message);
+			printf("GL ERROR: %s: %s\n", funcName, error.message);
 			return true;
 		}
 	}
 
-	return false;
+	printf("GL ERROR: unknown error\n");
+	return true;
 }

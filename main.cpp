@@ -1,5 +1,6 @@
 #include "headers.h"
 #include "GLTexture.h"
+#include "GLUtils.h"
 
 int main(int argv, char **args)
 {
@@ -11,6 +12,9 @@ int main(int argv, char **args)
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 0);
 
 	window = SDL_CreateWindow("SDL2 Test",
 	                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480,
@@ -33,10 +37,12 @@ int main(int argv, char **args)
 		return 1;
 	}
 
-	t->Bind();
+	GLTexture *t2 = GLTexture::Load("test2.png");
+	if (!t2) {
+		return 1;
+	}
 
 	glClearColor(0.6, 0.6, 0.6, 1);
-	glEnable(GL_TEXTURE);
 
 	bool running = true;
 	while (running)
@@ -51,6 +57,11 @@ int main(int argv, char **args)
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		glEnable(GL_TEXTURE);
+		t->Bind();
+		t2->Bind();
+
 		glColor3f(1, 1, 1);
 
 
