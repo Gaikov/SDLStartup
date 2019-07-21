@@ -58,27 +58,25 @@ int main(int argv, char **args)
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glEnable(GL_TEXTURE);
+		glEnable(GL_TEXTURE_2D);
 		t->Bind();
-		t2->Bind();
+		//t2->Bind();
 
 		glColor3f(1, 1, 1);
 
-
 		glBegin(GL_QUADS);
 
-
-		glVertex2f(-0.5f, -0.5f);
 		glTexCoord2f(0, 0);
+		glVertex2f(-0.5f, -0.5f);
 
-		glVertex2f(-0.5f, 0.5f);
 		glTexCoord2f(0, 1);
+		glVertex2f(-0.5f, 0.5f);
 
-		glVertex2f(0.5f, 0.5f);
 		glTexCoord2f(1, 1);
+		glVertex2f(0.5f, 0.5f);
 
-		glVertex2f(0.5f, -0.5f);
 		glTexCoord2f(1, 0);
+		glVertex2f(0.5f, -0.5f);
 
 		glEnd();
 

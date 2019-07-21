@@ -39,6 +39,7 @@ void GLTexture::Free(GLTexture *t)
 
 bool GLTexture::CreateFromFile(const char *filePath)
 {
+	printf("...loading texture: %s\n", filePath);
 	_surf = IMG_Load(filePath);
 	if (!_surf)
 	{
@@ -51,6 +52,9 @@ bool GLTexture::CreateFromFile(const char *filePath)
 
 bool GLTexture::CreateFromSurface(SDL_Surface *surf)
 {
+	auto formatInfo = SDL_GetPixelFormatName(surf->format->format);
+	printf("surface format: %s (%i bpp)\n", formatInfo, surf->format->BytesPerPixel);
+
 	glGenTextures(1, &_glTexture);
 	GL_CHECK("glGenTextures")
 
@@ -59,8 +63,8 @@ bool GLTexture::CreateFromSurface(SDL_Surface *surf)
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
 	             surf->w, surf->h, 0,
-	             GL_RGBA, GL_UNSIGNED_BYTE, surf->pixels);
-	GL_CHECK("glTexImage2D")//*/
+	             GL_BGRA, GL_UNSIGNED_BYTE, surf->pixels);
+	GL_CHECK("glTexImage2D")
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
