@@ -1,6 +1,7 @@
 #include "headers.h"
 #include "GLTexture.h"
 #include "GLUtils.h"
+#include "GLDebug.h"
 
 int main(int argv, char **args)
 {
@@ -64,21 +65,7 @@ int main(int argv, char **args)
 
 		glColor3f(1, 1, 1);
 
-		glBegin(GL_QUADS);
-
-		glTexCoord2f(0, 0);
-		glVertex2f(-0.5f, -0.5f);
-
-		glTexCoord2f(0, 1);
-		glVertex2f(-0.5f, 0.5f);
-
-		glTexCoord2f(1, 1);
-		glVertex2f(0.5f, 0.5f);
-
-		glTexCoord2f(1, 0);
-		glVertex2f(0.5f, -0.5f);
-
-		glEnd();
+		GLDebug::DrawQuad(-0.5f, -0.5f, 1, 1);
 
 		glFlush();
 		SDL_GL_SwapWindow(window);
