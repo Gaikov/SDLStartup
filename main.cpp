@@ -2,6 +2,10 @@
 #include "GLTexture.h"
 #include "GLUtils.h"
 #include "GLDebug.h"
+#include "linmath.h"
+
+#define WIDTH 640
+#define HEIGHT 480
 
 int main(int argv, char **args)
 {
@@ -18,7 +22,7 @@ int main(int argv, char **args)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 0);
 
 	window = SDL_CreateWindow("SDL2 Test",
-	                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480,
+	                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT,
 	                          SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 	if (!window)
 	{
@@ -44,6 +48,11 @@ int main(int argv, char **args)
 	}
 
 	glClearColor(0.6, 0.6, 0.6, 1);
+	mat4x4 proj;
+	mat4x4_ortho(proj, 0, WIDTH, HEIGHT, 0, -1, 1);
+	glMatrixMode(GL_PROJECTION);
+	glLoadMatrixf((float*)proj);
+	glMatrixMode(GL_MODELVIEW);
 
 	bool running = true;
 	while (running)
@@ -65,7 +74,7 @@ int main(int argv, char **args)
 
 		glColor3f(1, 1, 1);
 
-		GLDebug::DrawQuad(-0.5f, -0.5f, 1, 1);
+		GLDebug::DrawQuad(100, 100, 100, 100);
 
 		glFlush();
 		SDL_GL_SwapWindow(window);
