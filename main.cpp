@@ -70,11 +70,11 @@ int main(int argv, char **args)
 
 		glEnable(GL_TEXTURE_2D);
 		t->Bind();
-		//t2->Bind();
+		t2->Bind();
 
 		glColor3f(1, 1, 1);
 
-		GLDebug::DrawQuad(100, 100, 100, 100);
+		GLDebug::DrawQuad(100, 100, t2->getWidth(), t2->getHeight());
 
 		glFlush();
 		SDL_GL_SwapWindow(window);

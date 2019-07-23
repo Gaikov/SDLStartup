@@ -16,6 +16,9 @@ public:
 	static void Free(GLTexture *t);
 	bool Bind();
 
+	int getWidth();
+	int getHeight();
+
 private:
 	GLTexture();
 	virtual ~GLTexture();

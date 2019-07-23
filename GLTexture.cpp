@@ -80,3 +80,13 @@ bool GLTexture::Bind()
 
 	return true;
 }
+
+int GLTexture::getWidth()
+{
+	return _surf ? _surf->w : 1;
+}
+
+int GLTexture::getHeight()
+{
+	return _surf ? _surf->h : 1;
+}
