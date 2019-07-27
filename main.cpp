@@ -38,7 +38,11 @@ int main(int argv, char **args)
 		return 1;
 	}
 
-	GLTexturesCache::Init();
+	if (!GLTexturesCache::Init())
+	{
+		return 1;
+	}
+
 
 	GLTexture *t = GLTexture::Load("test.png");
 	if (!t) {

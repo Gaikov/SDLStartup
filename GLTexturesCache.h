@@ -2,8 +2,8 @@
 // Created by Raman Haikou on 2019-07-27.
 //
 
-#ifndef SDLTEST_GLTEXTURESCACHE_H
-#define SDLTEST_GLTEXTURESCACHE_H
+#ifndef _GROM_GLTEXTURESCACHE_H_
+#define _GROM_GLTEXTURESCACHE_H_
 
 #include "headers.h"
 
@@ -12,7 +12,7 @@ class GLTexture;
 class GLTexturesCache
 {
 public:
-	static void Init();
+	static bool Init();
 	static void Release();
 
 	GLTexture* GetTexture(const char *fileName);
@@ -31,4 +31,4 @@ private:
 };
 
 
-#endif //SDLTEST_GLTEXTURESCACHE_H
+#endif //_GROM_GLTEXTURESCACHE_H_

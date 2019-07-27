@@ -9,5 +9,6 @@
 #include <SDL2/SDL.h>
 #include <SDL_opengl.h>
 #include <map>
+#include <IL/il.h>
 
 #endif //SDLTEST_HEADERS_H

@@ -4,10 +4,13 @@
 
 #include "GLTexturesCache.h"
 #include <IL/il.h>
+#include "TextureUtils.h"
 
-void GLTexturesCache::Init()
+bool GLTexturesCache::Init()
 {
 	ilInit();
+	IMAGE_CHECK("ilInit")
+	return true;
 }
 
 void GLTexturesCache::Release()
