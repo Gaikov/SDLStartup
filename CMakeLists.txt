@@ -14,6 +14,8 @@ endmacro()
 
 set(CMAKE_CXX_STANDARD 17)
 
+find_package(DevIL REQUIRED)
+
 find_package(SDL2 REQUIRED)
 if(NOT SDL2_FOUND)
     message(SEND_ERROR "Failed to find SDL")
@@ -25,16 +27,19 @@ else()
 endif()
 
 find_package(OPENGL REQUIRED)
-if(NOT OPENGL_FOUND)
-    message(SEND_ERROR "Failed to find OPENGL")
-    return()
-endif()
 
 set(SOURCES
         main.cpp
-        GLTexture.cpp headers.h GLUtils.cpp GLUtils.h TextureUtils.cpp TextureUtils.h GLDebug.cpp GLDebug.h)
+        GLTexture.cpp headers.h GLUtils.cpp GLUtils.h TextureUtils.cpp TextureUtils.h GLDebug.cpp GLDebug.h GLTexturesCache.cpp GLTexturesCache.h)
 
 add_executable(SDLTest ${SOURCES})
-target_link_libraries(SDLTest ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES} SDL2_image)
+
+target_link_libraries(SDLTest
+        ${SDL2_LIBRARIES}
+        ${OPENGL_LIBRARIES}
+        SDL2_image
+        ${IL_LIBRARIES}
+        ${ILU_LIBRARIES}
+        ${ILUT_LIBRARIES})
 
 #print_all_variables()

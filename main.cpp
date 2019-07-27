@@ -3,6 +3,7 @@
 #include "GLUtils.h"
 #include "GLDebug.h"
 #include "linmath.h"
+#include "GLTexturesCache.h"
 
 #define WIDTH 640
 #define HEIGHT 480
@@ -36,6 +37,8 @@ int main(int argv, char **args)
 		printf("Can't create gl context: %s\n", SDL_GetError());
 		return 1;
 	}
+
+	GLTexturesCache::Init();
 
 	GLTexture *t = GLTexture::Load("test.png");
 	if (!t) {
@@ -81,6 +84,8 @@ int main(int argv, char **args)
 	}
 
 	GLTexture::Free(t);
+
+	GLTexturesCache::Release();
 	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

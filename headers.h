@@ -8,5 +8,6 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL_opengl.h>
+#include <map>
 
 #endif //SDLTEST_HEADERS_H
