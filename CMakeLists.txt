@@ -37,7 +37,6 @@ add_executable(SDLTest ${SOURCES})
 target_link_libraries(SDLTest
         ${SDL2_LIBRARIES}
         ${OPENGL_LIBRARIES}
-        SDL2_image
         ${IL_LIBRARIES}
         ${ILU_LIBRARIES}
         ${ILUT_LIBRARIES})

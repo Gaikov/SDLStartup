@@ -16,18 +16,20 @@ public:
 	static void Free(GLTexture *t);
 	bool Bind();
 
-	int getWidth();
-	int getHeight();
+	int GetWidth();
+	int GetHeight();
 
 private:
 	GLTexture();
 	virtual ~GLTexture();
 
 	bool CreateFromFile(const char* filePath);
-	bool CreateFromSurface(SDL_Surface *surf);
+	bool CreateFromBytes(int width, int height, void *data);
 
 private:
-	SDL_Surface *_surf;
+	ILint _width;
+	ILint _height;
+
 	GLuint  _glTexture;
 };
 

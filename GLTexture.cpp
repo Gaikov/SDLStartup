@@ -2,23 +2,20 @@
 // Created by Roman Gaikov on 2019-07-12.
 //
 
-#include <SDL_image.h>
 #include "GLTexture.h"
 #include "GLUtils.h"
+#include "TextureUtils.h"
 
 GLTexture::GLTexture() :
-		_surf(nullptr),
-		_glTexture(0)
+		_glTexture(0),
+		_width(1),
+		_height(1)
 {
 
 }
 
 GLTexture::~GLTexture()
 {
-	if (_surf)
-	{
-		SDL_FreeSurface(_surf);
-	}
 }
 
 GLTexture *GLTexture::Load(const char *filePath)
@@ -40,20 +37,28 @@ void GLTexture::Free(GLTexture *t)
 bool GLTexture::CreateFromFile(const char *filePath)
 {
 	printf("...loading texture: %s\n", filePath);
-	_surf = IMG_Load(filePath);
-	if (!_surf)
-	{
-		printf("can't load image: %s (%s)\n", filePath, IMG_GetError());
-		return false;
-	}
+	auto image = ilGenImage();
+	IMAGE_CHECK("ilGenImage")
+	ilBindImage(image);
+	IMAGE_CHECK("ilBindimage")
+	ilLoadImage(filePath);
+	IMAGE_CHECK("ilLoadImage")
 
-	return CreateFromSurface(_surf);
+	auto w = ilGetInteger(IL_IMAGE_WIDTH);
+	auto h = ilGetInteger(IL_IMAGE_HEIGHT);
+	ilSetInteger(IL_IMAGE_FORMAT, IL_RGBA);
+	IMAGE_CHECK("IL_IMAGE_FORMAT")
+
+	auto data = ilGetData();
+	IMAGE_CHECK("ilGetData")
+
+	return CreateFromBytes(w, h, data);
 }
 
-bool GLTexture::CreateFromSurface(SDL_Surface *surf)
+bool GLTexture::CreateFromBytes(int width, int height, void *data)
 {
-	auto formatInfo = SDL_GetPixelFormatName(surf->format->format);
-	printf("surface format: %s (%i bpp)\n", formatInfo, surf->format->BytesPerPixel);
+	_width = width;
+	_height = height;
 
 	glGenTextures(1, &_glTexture);
 	GL_CHECK("glGenTextures")
@@ -62,8 +67,8 @@ bool GLTexture::CreateFromSurface(SDL_Surface *surf)
 	GL_CHECK("glBindTexture")
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-	             surf->w, surf->h, 0,
-	             GL_BGRA, GL_UNSIGNED_BYTE, surf->pixels);
+	             width, height, 0,
+	             GL_BGRA, GL_UNSIGNED_BYTE, data);
 	GL_CHECK("glTexImage2D")
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -81,12 +86,12 @@ bool GLTexture::Bind()
 	return true;
 }
 
-int GLTexture::getWidth()
+int GLTexture::GetWidth()
 {
-	return _surf ? _surf->w : 1;
+	return _width;
 }
 
-int GLTexture::getHeight()
+int GLTexture::GetHeight()
 {
-	return _surf ? _surf->h : 1;
+	return _height;
 }

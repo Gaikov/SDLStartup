@@ -10,6 +10,7 @@
 
 int main(int argv, char **args)
 {
+	printf("...running\n");
 	SDL_Window *window;
 
 	SDL_Init(SDL_INIT_VIDEO);
@@ -81,7 +82,7 @@ int main(int argv, char **args)
 
 		glColor3f(1, 1, 1);
 
-		GLDebug::DrawQuad(100, 100, t2->getWidth(), t2->getHeight());
+		GLDebug::DrawQuad(100, 100, t2->GetWidth(), t2->GetHeight());
 
 		glFlush();
 		SDL_GL_SwapWindow(window);
