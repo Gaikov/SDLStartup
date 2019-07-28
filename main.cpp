@@ -78,7 +78,7 @@ int main(int argv, char **args)
 
 		glEnable(GL_TEXTURE_2D);
 		t->Bind();
-		t2->Bind();
+		//t2->Bind();
 
 		glColor3f(1, 1, 1);
 

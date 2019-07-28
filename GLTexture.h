@@ -24,11 +24,12 @@ private:
 	virtual ~GLTexture();
 
 	bool CreateFromFile(const char* filePath);
-	bool CreateFromBytes(int width, int height, void *data);
+	bool CreateFromBytes(int width, int height, ILbyte *data);
 
 private:
-	ILint _width;
-	ILint _height;
+	int _width;
+	int _height;
+	ILbyte * _data;
 
 	GLuint  _glTexture;
 };
