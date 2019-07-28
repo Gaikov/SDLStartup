@@ -30,7 +30,12 @@ find_package(OPENGL REQUIRED)
 
 set(SOURCES
         main.cpp
-        GLTexture.cpp headers.h GLUtils.cpp GLUtils.h TextureUtils.cpp TextureUtils.h GLDebug.cpp GLDebug.h GLTexturesCache.cpp GLTexturesCache.h)
+        GLTexture.cpp
+        GLUtils.cpp
+        TextureUtils.cpp
+        GLDebug.cpp
+        GLTexturesCache.cpp
+        BitmapData.cpp)
 
 add_executable(SDLTest ${SOURCES})
 

@@ -9,7 +9,7 @@
 bool GLTexturesCache::Init()
 {
 	ilInit();
-	IMAGE_CHECK("ilInit")
+	IMAGE_CHECK("ilInit", false)
 	return true;
 }
 

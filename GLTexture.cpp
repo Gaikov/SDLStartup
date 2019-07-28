@@ -9,15 +9,15 @@
 GLTexture::GLTexture() :
 		_glTexture(0),
 		_width(1),
-		_height(1),
-		_data(nullptr)
+		_height(1)
 {
-
 }
 
 GLTexture::~GLTexture()
 {
-	delete _data;
+	if (_glTexture) {
+		glDeleteTextures(1, &_glTexture);
+	}
 }
 
 GLTexture *GLTexture::Load(const char *filePath)
@@ -38,28 +38,21 @@ void GLTexture::Free(GLTexture *t)
 
 bool GLTexture::CreateFromFile(const char *filePath)
 {
-	printf("...loading texture: %s\n", filePath);
-	auto image = ilGenImage();
-	IMAGE_CHECK("ilGenImage")
-	ilBindImage(image);
-	IMAGE_CHECK("ilBindimage")
-	ilLoadImage(filePath);
-	IMAGE_CHECK("ilLoadImage")
+	auto data = BitmapData::LoadFromFile(filePath);
+	if (!data)
+	{
+		return false;
+	}
 
-	auto w = (ILuint)ilGetInteger(IL_IMAGE_WIDTH);
-	auto h = (ILuint)ilGetInteger(IL_IMAGE_HEIGHT);
-	auto data = new ILbyte[w * h * 4];
-	ilCopyPixels(0, 0, 0, w, h, 1, IL_RGBA, IL_UNSIGNED_BYTE, data);
-	IMAGE_CHECK("ilCopyPixels")
-
-	return CreateFromBytes(w, h, data);
+	auto result = CreateFromBitmapData(data);
+	delete data;
+	return result;
 }
 
-bool GLTexture::CreateFromBytes(int width, int height, ILbyte *data)
+bool GLTexture::CreateFromBitmapData(BitmapData *bmData)
 {
-	_width = width;
-	_height = height;
-	_data = data;
+	_width = bmData->GetWidth();
+	_height = bmData->GetHeight();
 
 	glGenTextures(1, &_glTexture);
 	GL_CHECK("glGenTextures")
@@ -68,8 +61,8 @@ bool GLTexture::CreateFromBytes(int width, int height, ILbyte *data)
 	GL_CHECK("glBindTexture")
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-	             width, height, 0,
-	             GL_RGBA, GL_UNSIGNED_BYTE, data);
+	             bmData->GetWidth(), bmData->GetHeight(), 0,
+	             GL_RGBA, GL_UNSIGNED_BYTE, bmData->GetData());
 	GL_CHECK("glTexImage2D")
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

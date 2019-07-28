@@ -15,9 +15,9 @@ public:
 	static bool hasError(const char *funcName);
 };
 
-#define IMAGE_CHECK(funcName) \
+#define IMAGE_CHECK(funcName, error) \
 if (TextureUtils::hasError(funcName)) \
-    return false;
+    return error;
 
 
 #endif //_GROM_TEXTURE_UTILS_H_
