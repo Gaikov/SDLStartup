@@ -6,6 +6,18 @@
 #include "headers.h"
 #include "TextureUtils.h"
 
+bool BitmapData::Init()
+{
+	ilInit();
+	IMAGE_CHECK("ilInit", false)
+	return true;
+}
+
+void BitmapData::Release()
+{
+	ilShutDown();
+}
+
 BitmapData::BitmapData(int w, int h) :
 	_width(w),
 	_height(h)

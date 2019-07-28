@@ -5,15 +5,3 @@
 #include "GLTexturesCache.h"
 #include <IL/il.h>
 #include "TextureUtils.h"
-
-bool GLTexturesCache::Init()
-{
-	ilInit();
-	IMAGE_CHECK("ilInit", false)
-	return true;
-}
-
-void GLTexturesCache::Release()
-{
-	ilShutDown();
-}

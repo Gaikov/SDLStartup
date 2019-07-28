@@ -22,3 +22,9 @@ void GLDebug::DrawQuad(float x, float y, float width, float height)
 
 	glEnd();
 }
+
+void GLDebug::DrawSprite(GLTexture *t, float x, float y)
+{
+	t->Bind();
+	DrawQuad(x, y, t->GetWidth(), t->GetHeight());
+}

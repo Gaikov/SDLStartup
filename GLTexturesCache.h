@@ -12,9 +12,6 @@ class GLTexture;
 class GLTexturesCache
 {
 public:
-	static bool Init();
-	static void Release();
-
 	GLTexture* GetTexture(const char *fileName);
 	void FreeTexture(GLTexture *texture);
 

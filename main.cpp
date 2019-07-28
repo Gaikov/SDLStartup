@@ -4,6 +4,7 @@
 #include "GLDebug.h"
 #include "linmath.h"
 #include "GLTexturesCache.h"
+#include "BitmapData.h"
 
 #define WIDTH 640
 #define HEIGHT 480
@@ -39,7 +40,7 @@ int main(int argv, char **args)
 		return 1;
 	}
 
-	if (!GLTexturesCache::Init())
+	if (!BitmapData::Init())
 	{
 		return 1;
 	}
@@ -77,12 +78,10 @@ int main(int argv, char **args)
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glEnable(GL_TEXTURE_2D);
-		t->Bind();
-		//t2->Bind();
 
 		glColor3f(1, 1, 1);
 
-		GLDebug::DrawQuad(100, 100, t2->GetWidth(), t2->GetHeight());
+		GLDebug::DrawSprite(t, 100, 100);
 
 		glFlush();
 		SDL_GL_SwapWindow(window);
@@ -90,7 +89,7 @@ int main(int argv, char **args)
 
 	GLTexture::Free(t);
 
-	GLTexturesCache::Release();
+	BitmapData::Release();
 	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

@@ -6,10 +6,12 @@
 #define SDLTEST_GLDEBUG_H
 
 #include "headers.h"
+#include "GLTexture.h"
 
 class GLDebug
 {
 public:
+	static void DrawSprite(GLTexture *t, float x, float y);
 	static void DrawQuad(float x, float y, float width, float height);
 };
 
