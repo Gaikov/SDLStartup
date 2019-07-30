@@ -35,7 +35,8 @@ set(SOURCES
         TextureUtils.cpp
         GLDebug.cpp
         GLTexturesCache.cpp
-        BitmapData.cpp)
+        BitmapData.cpp
+        SimpleCache.cpp)
 
 add_executable(SDLTest ${SOURCES})
 

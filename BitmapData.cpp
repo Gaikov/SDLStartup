@@ -32,7 +32,6 @@ BitmapData::~BitmapData()
 
 BitmapData *BitmapData::LoadFromFile(const char *filePath)
 {
-	printf("...loading texture: %s\n", filePath);
 	auto image = ilGenImage();
 	IMAGE_CHECK("ilGenImage", nullptr)
 	ilBindImage(image);

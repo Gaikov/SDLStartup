@@ -15,24 +15,28 @@ GLTexture::GLTexture() :
 
 GLTexture::~GLTexture()
 {
-	if (_glTexture) {
+	if (_glTexture)
+	{
 		glDeleteTextures(1, &_glTexture);
 	}
 }
 
 GLTexture *GLTexture::Load(const char *filePath)
 {
+	printf("...loading texture: %s\n", filePath);
 	auto t = new GLTexture();
 	if (!t->CreateFromFile(filePath))
 	{
 		delete t;
 		return nullptr;
 	}
+	t->_idInfo = filePath;
 	return t;
 }
 
 void GLTexture::Free(GLTexture *t)
 {
+	printf("...releasing texture: %s\n", t->_idInfo.c_str());
 	delete t;
 }
 

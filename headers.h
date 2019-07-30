@@ -2,13 +2,14 @@
 // Created by Roman Gaikov on 2019-07-16.
 //
 
-#ifndef SDLTEST_HEADERS_H
-#define SDLTEST_HEADERS_H
+#ifndef __GROM_HEADERS_H__
+#define __GROM_HEADERS_H__
 
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL_opengl.h>
 #include <map>
 #include <IL/il.h>
+#include <functional>
 
-#endif //SDLTEST_HEADERS_H
+#endif //__GROM_HEADERS_H__

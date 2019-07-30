@@ -28,6 +28,7 @@ private:
 	bool CreateFromBitmapData(BitmapData *bmData);
 
 private:
+	std::string _idInfo;
 	int _width;
 	int _height;
 	GLuint _glTexture;
