@@ -46,13 +46,16 @@ int main(int argv, char **args)
 		return 1;
 	}
 
+	GLTexturesCache textures;
 
-	GLTexture *t = GLTexture::Load("test.png");
+
+	textures.GetResource("test.png", 0);
+	auto t = textures.GetResource("test.png", 0);
 	if (!t) {
 		return 1;
 	}
 
-	GLTexture *t2 = GLTexture::Load("test2.png");
+	GLTexture *t2 = textures.GetResource("test2.png", 0);
 	if (!t2) {
 		return 1;
 	}
@@ -82,12 +85,15 @@ int main(int argv, char **args)
 
 		glColor3f(1, 1, 1);
 
-		GLDebug::DrawSprite(t, 100, 100);
+		GLDebug::DrawSprite(t, 10, 10);
+		GLDebug::DrawSprite(t2, 300, 10);
 
 		glFlush();
 		SDL_GL_SwapWindow(window);
 	}
 
+	textures.ReleaseResource(t2);
+	textures.ReleaseAll();
 	BitmapData::Release();
 	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);

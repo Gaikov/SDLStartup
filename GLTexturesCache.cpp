@@ -6,25 +6,12 @@
 #include "TextureUtils.h"
 #include "GLTexture.h"
 
-GLTexturesCache::GLTexturesCache() :
-		_cache([this](const char *fileName) -> GLTexture *
-		       {
-			       return GLTexture::Load(fileName);
-		       })
+GLTexture *GLTexturesCache::AllocateResource(const char *id, int param)
 {
-
+	return GLTexture::Load(id);
 }
 
-GLTexture *GLTexturesCache::GetTexture(const char *fileName)
+void GLTexturesCache::FreeResource(GLTexture *item)
 {
-	return _cache.GetEntry(fileName);
+	GLTexture::Free(item);
 }
-
-void GLTexturesCache::FreeTexture(GLTexture *texture)
-{
-	if (_cache.ReleaseEntry(texture, false))
-	{
-		GLTexture::Free(texture);
-	}
-}
-

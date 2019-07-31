@@ -6,21 +6,16 @@
 #define _GROM_GLTEXTURESCACHE_H_
 
 #include "headers.h"
-#include "SimpleCache.h"
+#include "ResourcesCache.h"
 
 class GLTexture;
 
-class GLTexturesCache
+class GLTexturesCache : public ResourcesCache<GLTexture, int>
 {
-public:
-	GLTexturesCache();
-
-	GLTexture* GetTexture(const char *fileName);
-	void FreeTexture(GLTexture *texture);
-
 private:
-
-	SimpleCache<GLTexture> _cache;
+protected:
+	GLTexture *AllocateResource(const char *id, int param) override;
+	void FreeResource(GLTexture *item) override;
 };
 
 
