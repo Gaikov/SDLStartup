@@ -41,6 +41,7 @@ int main(int argv, char **args)
 		return 1;
 	}
 
+	GLDebug::Init();
 	if (!BitmapData::Init())
 	{
 		return 1;
@@ -95,6 +96,7 @@ int main(int argv, char **args)
 	textures.ReleaseResource(t2);
 	textures.ReleaseAll();
 	BitmapData::Release();
+	GLDebug::Release();
 	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

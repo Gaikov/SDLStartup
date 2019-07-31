@@ -37,7 +37,8 @@ set(SOURCES
         GLTexturesCache.cpp
         BitmapData.cpp
         ResourcesCache.cpp
-        GLRenderer.cpp)
+        GLRenderer.cpp
+        GLVertexBuffer.cpp)
 
 add_executable(SDLTest ${SOURCES})
 
