@@ -9,6 +9,7 @@
 class IFunctionalTest
 {
 public:
+	virtual ~IFunctionalTest() = default;
 	virtual bool Init() = 0;
 	virtual void Release() = 0;
 	virtual void Draw() = 0;

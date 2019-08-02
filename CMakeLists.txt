@@ -26,6 +26,8 @@ else()
             )
 endif()
 
+include_directories(./)
+
 find_package(OPENGL REQUIRED)
 
 set(SOURCES
@@ -42,7 +44,7 @@ set(SOURCES
         functional/IFunctionalTest.cpp
         functional/TexturesTest.cpp
         functional/TexturesTest.cpp
-        functional/FunctionalTestRunner.cpp)
+        functional/FunctionalTestRunner.cpp functional/VertexColorTest.cpp functional/VertexColorTest.h)
 
 add_executable(SDLTest ${SOURCES})
 

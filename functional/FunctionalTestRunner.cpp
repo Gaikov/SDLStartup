@@ -4,10 +4,12 @@
 
 #include "FunctionalTestRunner.h"
 #include "TexturesTest.h"
+#include "VertexColorTest.h"
 
 FunctionalTestRunner::FunctionalTestRunner()
 {
-	_activeTest = new TexturesTest();
+	//_activeTest = new TexturesTest();
+	_activeTest = new VertexColorTest();
 }
 
 bool FunctionalTestRunner::Init()
@@ -18,6 +20,7 @@ bool FunctionalTestRunner::Init()
 void FunctionalTestRunner::Release()
 {
 	_activeTest->Release();
+	delete _activeTest;
 }
 
 void FunctionalTestRunner::Draw()

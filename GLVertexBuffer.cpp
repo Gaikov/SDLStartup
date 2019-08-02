@@ -33,13 +33,19 @@ void GLVertexBuffer::SetPos(int vertexIndex, float x, float y, float z)
 	v->z = z;
 }
 
-void GLVertexBuffer::SetColor(int vertexIndex, float r, float g, float b, float a)
+void GLVertexBuffer::SetColor(int vertexIndex, unsigned int color)
 {
 	Vertex	*v = &m_verts[vertexIndex];
-	v->r = r;
-	v->g = g;
-	v->b = b;
-	v->a = a;
+
+	unsigned char r, g, b, a;
+
+	a = (unsigned char)((color & 0xff000000) >> 24);
+
+	r = (unsigned char)((color & 0x00ff0000) >> 16);
+	g = (unsigned char)((color & 0x0000ff00) >> 8);
+	b = (unsigned char)((color & 0x000000ff));
+
+	v->color = r | g << 8 | b << 16 | a << 24;
 }
 
 void GLVertexBuffer::SetTex(int vertexIndex, float tu, float tv)
@@ -85,7 +91,7 @@ void GLVertexBuffer::Draw(unsigned int primitivesMode)
 	if (m_useColor)
 	{
 		glEnableClientState(GL_COLOR_ARRAY);
-		glColorPointer(4, GL_FLOAT, sizeof(Vertex), &m_verts->r);
+		glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Vertex), &m_verts->color);
 	}
 	else
 	{

@@ -21,7 +21,7 @@ public:
 	void SetPosTex(int vertexIndex, float x, float y, float z, float tu,
 			float tv);
 	void SetTex(int vertexIndex, float tu, float tv);
-	void SetColor(int vertexIndex, float r, float g, float b, float a);
+	void SetColor(int vertexIndex, unsigned int color);
 	void SetIndex(int index, unsigned short vertexIndex);
 
 	void Draw(unsigned int primitivesMode);
@@ -30,8 +30,9 @@ private:
 	struct Vertex
 	{
 		float x, y, z;
+		float nx, ny, nz;
+		unsigned int color;
 		float tu, tv;
-		float r, g, b, a;
 	};
 
 	Vertex *m_verts;
