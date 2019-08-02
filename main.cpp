@@ -5,6 +5,7 @@
 #include "linmath.h"
 #include "GLTexturesCache.h"
 #include "BitmapData.h"
+#include "functional/FunctionalTestRunner.h"
 
 #define WIDTH 640
 #define HEIGHT 480
@@ -46,18 +47,9 @@ int main(int argv, char **args)
 	{
 		return 1;
 	}
-
-	GLTexturesCache textures;
-
-
-	textures.GetResource("test.png", 0);
-	auto t = textures.GetResource("test.png", 0);
-	if (!t) {
-		return 1;
-	}
-
-	GLTexture *t2 = textures.GetResource("test2.png", 0);
-	if (!t2) {
+	FunctionalTestRunner testRunner;
+	if (!testRunner.Init())
+	{
 		return 1;
 	}
 
@@ -86,15 +78,13 @@ int main(int argv, char **args)
 
 		glColor3f(1, 1, 1);
 
-		GLDebug::DrawSprite(t, 10, 10);
-		GLDebug::DrawSprite(t2, 300, 10);
+		testRunner.Draw();
 
 		glFlush();
 		SDL_GL_SwapWindow(window);
 	}
 
-	textures.ReleaseResource(t2);
-	textures.ReleaseAll();
+	testRunner.Release();
 	BitmapData::Release();
 	GLDebug::Release();
 	SDL_GL_DeleteContext(glContext);

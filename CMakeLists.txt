@@ -38,7 +38,11 @@ set(SOURCES
         BitmapData.cpp
         ResourcesCache.cpp
         GLRenderer.cpp
-        GLVertexBuffer.cpp)
+        GLVertexBuffer.cpp
+        functional/IFunctionalTest.cpp
+        functional/TexturesTest.cpp
+        functional/TexturesTest.cpp
+        functional/FunctionalTestRunner.cpp)
 
 add_executable(SDLTest ${SOURCES})
 
