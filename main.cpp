@@ -7,8 +7,8 @@
 #include "BitmapData.h"
 #include "functional/FunctionalTestRunner.h"
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 800
+#define HEIGHT 600
 
 int main(int argv, char **args)
 {
@@ -90,4 +90,6 @@ int main(int argv, char **args)
 	SDL_GL_DeleteContext(glContext);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+
+    return 0;
 }

@@ -28,7 +28,7 @@ endif()
 
 include_directories(./)
 
-find_package(OPENGL REQUIRED)
+find_package(OpenGL REQUIRED)
 
 set(SOURCES
         main.cpp

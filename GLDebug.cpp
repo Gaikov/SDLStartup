@@ -66,6 +66,7 @@ bool GLDebug::Init()
 	_quadBuffer->SetIndex(4, 2);
 	_quadBuffer->SetIndex(5, 3);
 
+    return true;
 }
 
 void GLDebug::Release()
