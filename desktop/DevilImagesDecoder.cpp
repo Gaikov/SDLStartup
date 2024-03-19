@@ -17,7 +17,6 @@ void DevilImagesDecoder::Release() {
 }
 
 BitmapData *DevilImagesDecoder::LoadFromFile(const char *filePath) const {
-
     auto image = ilGenImage();
     IMAGE_CHECK("ilGenImage", nullptr)
     ilBindImage(image);

@@ -4,7 +4,6 @@
 
 #include "TexturesTest.h"
 #include "../GLDebug.h"
-#include "linmath.h"
 #include "GLTexture.h"
 
 TexturesTest::TexturesTest() : _angle(0), t(nullptr), t2(nullptr) {
