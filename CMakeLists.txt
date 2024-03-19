@@ -16,15 +16,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(DevIL REQUIRED)
 
-find_package(SDL2 REQUIRED)
-if(NOT SDL2_FOUND)
-    message(SEND_ERROR "Failed to find SDL")
-    return()
-else()
-    include_directories(${SDL2_INCLUDE_DIRS}
-            ${SDL2_INCLUDE_DIRS}/.. #fix on macOS
-            )
-endif()
+find_package(GLFW3 REQUIRED)
 
 include_directories(./)
 
@@ -49,10 +41,10 @@ set(SOURCES
 add_executable(SDLTest ${SOURCES})
 
 target_link_libraries(SDLTest
-        ${SDL2_LIBRARIES}
+        glfw
         ${OPENGL_LIBRARIES}
         ${IL_LIBRARIES}
         ${ILU_LIBRARIES}
         ${ILUT_LIBRARIES})
 
-#print_all_variables()
+print_all_variables()

@@ -6,8 +6,8 @@
 #define __GROM_HEADERS_H__
 
 #include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL_opengl.h>
+#include <GL/gl.h>
+#include <GLFW/glfw3.h>
 #include <map>
 #include <IL/il.h>
 #include <functional>
