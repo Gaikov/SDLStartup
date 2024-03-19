@@ -6,7 +6,7 @@
 #define __GROM_HEADERS_H__
 
 #include <iostream>
-#include <GL/gl.h>
+#include <GLES/gl.h>
 #include <GLFW/glfw3.h>
 #include <map>
 #include <IL/il.h>

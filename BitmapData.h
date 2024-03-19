@@ -17,7 +17,8 @@ public:
 
 	int GetWidth() const;
 	int GetHeight() const;
-	unsigned char *GetData() const;
+	unsigned char* GetData() const;
+    unsigned char* GetData() { return _data;}
 
 private:
 	int _width;

@@ -36,7 +36,10 @@ set(SOURCES
         functional/IFunctionalTest.cpp
         functional/TexturesTest.cpp
         functional/TexturesTest.cpp
-        functional/FunctionalTestRunner.cpp functional/VertexColorTest.cpp functional/VertexColorTest.h)
+        functional/FunctionalTestRunner.cpp
+        functional/VertexColorTest.cpp
+        engine/Engine.cpp
+)
 
 add_executable(SDLTest ${SOURCES})
 
