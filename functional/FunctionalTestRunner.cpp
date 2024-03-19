@@ -8,8 +8,8 @@
 
 FunctionalTestRunner::FunctionalTestRunner()
 {
-	_activeTest = new TexturesTest();
-	//_activeTest = new VertexColorTest();
+	//_activeTest = new TexturesTest();
+	_activeTest = new VertexColorTest();
 }
 
 bool FunctionalTestRunner::Init()
