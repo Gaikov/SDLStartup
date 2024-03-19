@@ -3,7 +3,6 @@
 //
 
 #include "GLTexturesCache.h"
-#include "TextureUtils.h"
 #include "GLTexture.h"
 
 GLTexture *GLTexturesCache::AllocateResource(const char *id, int param)

@@ -5,9 +5,9 @@
 #ifndef _GROM_TEXTURE_UTILS_H_
 #define _GROM_TEXTURE_UTILS_H_
 
-#include "headers.h"
+#include <IL/il.h>
 
-class TextureUtils
+class DevilUtils
 {
 public:
 	static const char *GetImageError(ILuint code);
@@ -16,7 +16,7 @@ public:
 };
 
 #define IMAGE_CHECK(funcName, error) \
-if (TextureUtils::hasError(funcName)) \
+if (DevilUtils::hasError(funcName)) \
     return error;
 
 

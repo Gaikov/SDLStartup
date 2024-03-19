@@ -9,7 +9,6 @@
 #include <GLES/gl.h>
 #include <GLFW/glfw3.h>
 #include <map>
-#include <IL/il.h>
 #include <functional>
 
 #endif //__GROM_HEADERS_H__

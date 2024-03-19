@@ -16,9 +16,9 @@ public:
 	static GLTexture *Load(const char *filePath);
 	static void Free(GLTexture *t);
 
-	bool Bind();
-	int GetWidth();
-	int GetHeight();
+	bool Bind() const;
+	int GetWidth() const;
+	int GetHeight() const;
 
 private:
 	GLTexture();

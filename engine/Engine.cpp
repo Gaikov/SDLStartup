@@ -6,13 +6,15 @@
 #include "GLDebug.h"
 #include "BitmapData.h"
 #include "linmath.h"
+#include "GameApp.h"
 
 FunctionalTestRunner Engine::_testRunner;
 
 bool Engine::Init() {
 
     GLDebug::Init();
-    if (!BitmapData::Init()) {
+
+    if (!GameApp::GetApp()->GetImageDecoder()->Init()) {
         return false;
     }
 
@@ -39,7 +41,7 @@ void Engine::Update(float deltaTime) {
 
 void Engine::Release() {
     _testRunner.Release();
-    BitmapData::Release();
+    GameApp::GetApp()->GetImageDecoder()->Release();
     GLDebug::Release();
 }
 

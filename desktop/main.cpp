@@ -1,10 +1,17 @@
 #include "headers.h"
 #include "engine/Engine.h"
+#include "engine/GameApp.h"
+#include "DesktopGameApp.h"
 
 #define WIDTH 800
 #define HEIGHT 600
 
 double prevTime = 0;
+DesktopGameApp app;
+
+GameApp *GameApp::GetApp() {
+    return &app;
+}
 
 int main(int argv, char **args) {
     printf("...running\n");

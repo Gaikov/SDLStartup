@@ -11,10 +11,6 @@ public:
 	BitmapData(int w, int h);
 	~BitmapData();
 
-	static BitmapData *LoadFromFile(const char *filePath);
-	static bool Init();
-	static void Release();
-
 	int GetWidth() const;
 	int GetHeight() const;
 	unsigned char* GetData() const;

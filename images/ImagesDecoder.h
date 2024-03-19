@@ -8,6 +8,9 @@
 #include "BitmapData.h"
 
 class ImagesDecoder {
+public:
+    virtual bool Init() = 0;
+    virtual void Release() = 0;
     virtual BitmapData* LoadFromFile(const char *fileName) const = 0;
 };
 

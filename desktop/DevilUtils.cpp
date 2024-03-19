@@ -2,7 +2,7 @@
 // Created by Raman Haikou on 2019-07-21.
 //
 
-#include "TextureUtils.h"
+#include "DevilUtils.h"
 
 struct ilError
 {
@@ -42,7 +42,7 @@ static ilError ilErrors[] = {
 		{IL_UNKNOWN_ERROR,        "IL_UNKNOWN_ERROR"}
 };
 
-const char *TextureUtils::GetImageError(ILuint code)
+const char *DevilUtils::GetImageError(ILuint code)
 {
 	for (auto error : ilErrors)
 	{
@@ -55,7 +55,7 @@ const char *TextureUtils::GetImageError(ILuint code)
 	return "undefined error";
 }
 
-bool TextureUtils::hasError(const char *funcName)
+bool DevilUtils::hasError(const char *funcName)
 {
 	auto code = ilGetError();
 	if (code)

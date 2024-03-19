@@ -4,7 +4,7 @@
 
 #include "GLTexture.h"
 #include "GLUtils.h"
-#include "TextureUtils.h"
+#include "engine/GameApp.h"
 
 GLTexture::GLTexture() :
 		_glTexture(0),
@@ -42,7 +42,7 @@ void GLTexture::Free(GLTexture *t)
 
 bool GLTexture::CreateFromFile(const char *filePath)
 {
-	auto data = BitmapData::LoadFromFile(filePath);
+	auto data = GameApp::GetApp()->GetImageDecoder()->LoadFromFile(filePath);
 	if (!data)
 	{
 		return false;
@@ -76,7 +76,7 @@ bool GLTexture::CreateFromBitmapData(BitmapData *bmData)
 	return true;
 }
 
-bool GLTexture::Bind()
+bool GLTexture::Bind() const
 {
 	glBindTexture(GL_TEXTURE_2D, _glTexture);
 	GL_CHECK("glBindTexture")
@@ -84,12 +84,12 @@ bool GLTexture::Bind()
 	return true;
 }
 
-int GLTexture::GetWidth()
+int GLTexture::GetWidth() const
 {
 	return _width;
 }
 
-int GLTexture::GetHeight()
+int GLTexture::GetHeight() const
 {
 	return _height;
 }

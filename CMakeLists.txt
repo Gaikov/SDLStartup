@@ -23,10 +23,10 @@ include_directories(./)
 find_package(OpenGL REQUIRED)
 
 set(SOURCES
-        main.cpp
+        desktop/main.cpp
         GLTexture.cpp
         GLUtils.cpp
-        TextureUtils.cpp
+        desktop/DevilUtils.cpp
         GLDebug.cpp
         GLTexturesCache.cpp
         BitmapData.cpp
@@ -39,6 +39,8 @@ set(SOURCES
         functional/FunctionalTestRunner.cpp
         functional/VertexColorTest.cpp
         engine/Engine.cpp
+        desktop/DesktopGameApp.cpp
+        desktop/DevilImagesDecoder.cpp
 )
 
 add_executable(SDLTest ${SOURCES})
