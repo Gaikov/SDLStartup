@@ -29,7 +29,7 @@ void VertexColorTest::Release()
 	delete _vb;
 }
 
-void VertexColorTest::Draw()
+void VertexColorTest::Update(float deltaTime)
 {
 	_vb->Draw(GL_TRIANGLES);
 }

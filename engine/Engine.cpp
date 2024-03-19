@@ -9,25 +9,18 @@
 
 FunctionalTestRunner Engine::_testRunner;
 
-bool Engine::Init(float width, float height) {
+bool Engine::Init() {
 
     GLDebug::Init();
-    if (!BitmapData::Init())
-    {
+    if (!BitmapData::Init()) {
         return false;
     }
 
-    if (!_testRunner.Init())
-    {
+    if (!_testRunner.Init()) {
         return false;
     }
 
     glClearColor(0.6, 0.6, 0.6, 1);
-    mat4x4 proj;
-    mat4x4_ortho(proj, 0, width, height, 0, -1, 1);
-    glMatrixMode(GL_PROJECTION);
-    glLoadMatrixf((float*)proj);
-    glMatrixMode(GL_MODELVIEW);
 
     return true;
 }
@@ -39,7 +32,7 @@ void Engine::Update(float deltaTime) {
 
     glColor4f(1, 1, 1, 1);
 
-    _testRunner.Draw();
+    _testRunner.Update(deltaTime);
 
     glFlush();
 }
@@ -48,4 +41,14 @@ void Engine::Release() {
     _testRunner.Release();
     BitmapData::Release();
     GLDebug::Release();
+}
+
+void Engine::OnResize(int width, int height) {
+    printf("on resize %ix%i\n", width, height);
+    glViewport(0, 0, width, height);
+    mat4x4 proj;
+    mat4x4_ortho(proj, 0, (float) width, (float) height, 0, -1, 1);
+    glMatrixMode(GL_PROJECTION);
+    glLoadMatrixf((float *) proj);
+    glMatrixMode(GL_MODELVIEW);
 }

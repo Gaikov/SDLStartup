@@ -9,9 +9,10 @@
 
 class Engine {
 public:
-    static bool Init(float width, float height);
+    static bool Init();
     static void Update(float deltaTime);
     static void Release();
+    static void OnResize(int width, int height);
 
 private:
     static FunctionalTestRunner _testRunner;

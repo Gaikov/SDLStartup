@@ -13,7 +13,7 @@ class VertexColorTest : public IFunctionalTest
 public:
 	bool Init() override;
 	void Release() override;
-	void Draw() override;
+	void Update(float d) override;
 private:
 	GLVertexBuffer *_vb;
 };

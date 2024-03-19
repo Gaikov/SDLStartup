@@ -11,13 +11,15 @@
 class TexturesTest : public IFunctionalTest
 {
 public:
+    TexturesTest();
 	bool Init() override;
 	void Release() override;
-	void Draw() override;
+	void Update(float d) override;
 
 private:
 	GLTexturesCache textures;
 	GLTexture       *t, *t2;
+    float _angle;
 };
 
 

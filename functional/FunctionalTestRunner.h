@@ -13,7 +13,7 @@ public:
 	FunctionalTestRunner();
 	bool Init();
 	void Release();
-	void Draw();
+	void Update(float d);
 private:
 	IFunctionalTest *_activeTest;
 };

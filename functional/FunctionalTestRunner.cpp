@@ -23,8 +23,8 @@ void FunctionalTestRunner::Release()
 	delete _activeTest;
 }
 
-void FunctionalTestRunner::Draw()
+void FunctionalTestRunner::Update(float deltaTime)
 {
-	_activeTest->Draw();
+    _activeTest->Update(deltaTime);
 }
 

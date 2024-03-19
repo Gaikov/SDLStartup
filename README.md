@@ -1,2 +1,2 @@
-# SDL2/OpenGL Startup
-SDL2 with OpenGL startup project with CMakeLists.txt
+# GLFW/OpenGLES Startup
+GLFW and OpenGLES startup project with CMakeLists.txt
