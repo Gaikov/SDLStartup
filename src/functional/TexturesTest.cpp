@@ -3,7 +3,7 @@
 //
 
 #include "TexturesTest.h"
-#include "../GLDebug.h"
+#include "GLDebug.h"
 #include "GLTexture.h"
 
 TexturesTest::TexturesTest() : _angle(0), t(nullptr), t2(nullptr) {

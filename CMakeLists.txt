@@ -18,29 +18,29 @@ find_package(DevIL REQUIRED)
 
 find_package(GLFW3 REQUIRED)
 
-include_directories(./)
+include_directories(./src)
 
 find_package(OpenGL REQUIRED)
 
 set(SOURCES
-        desktop/main.cpp
-        GLTexture.cpp
-        GLUtils.cpp
-        desktop/DevilUtils.cpp
-        GLDebug.cpp
-        GLTexturesCache.cpp
-        BitmapData.cpp
-        ResourcesCache.cpp
-        GLRenderer.cpp
-        GLVertexBuffer.cpp
-        functional/IFunctionalTest.cpp
-        functional/TexturesTest.cpp
-        functional/TexturesTest.cpp
-        functional/FunctionalTestRunner.cpp
-        functional/VertexColorTest.cpp
-        engine/Engine.cpp
-        desktop/DesktopGameApp.cpp
-        desktop/DevilImagesDecoder.cpp
+        src/desktop/main.cpp
+        src/GLTexture.cpp
+        src/GLUtils.cpp
+        src/desktop/DevilUtils.cpp
+        src/GLDebug.cpp
+        src/GLTexturesCache.cpp
+        src/BitmapData.cpp
+        src/ResourcesCache.cpp
+        src/GLRenderer.cpp
+        src/GLVertexBuffer.cpp
+        src/functional/IFunctionalTest.cpp
+        src/functional/TexturesTest.cpp
+        src/functional/TexturesTest.cpp
+        src/functional/FunctionalTestRunner.cpp
+        src/functional/VertexColorTest.cpp
+        src/engine/Engine.cpp
+        src/desktop/DesktopGameApp.cpp
+        src/desktop/DevilImagesDecoder.cpp
 )
 
 add_executable(SDLTest ${SOURCES})

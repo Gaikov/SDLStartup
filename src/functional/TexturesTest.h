@@ -6,7 +6,7 @@
 #define SDLTEST_TEXTURESTEST_H
 
 #include "IFunctionalTest.h"
-#include "../GLTexturesCache.h"
+#include "GLTexturesCache.h"
 
 class TexturesTest : public IFunctionalTest
 {
